@@ -1,0 +1,55 @@
+<%= turbo_frame_tag "__things-list"   do %>
+  <div class="container ">
+    
+      <h4>
+        THINGS
+      </h4>
+    
+
+    <%= render partial: "things/new_button", locals: {} %><br />
+
+    
+      
+        <div class="row ">
+          <div class='col-sm-1 heading--thing--name' >Name</div>
+<div class='col-sm-1 heading--thing--description' >Description</div>
+<div class='col-sm-1 heading--thing--executed_on' >Executed on</div>
+<div class='col-sm-1 heading--thing--concieved_of_at' >Concieved of at</div>
+<div class='col-sm-1 heading--thing--will_be_at' >Will be at</div>
+<div class='col-sm-1 heading--thing--persona' >Persona</div>
+<div class='col-sm-1 heading--thing--forecast' >Forecast</div>
+<div class='col-sm-1 heading--thing--user_id' >User</div>
+<div class='col-sm-1 heading--thing--when_at' >When at</div>
+<div class='col-sm-1 heading--thing--background_details' >Background details</div>
+<div class='col-sm-1 heading--thing--expected_result' >Expected result</div>
+<div class='col-sm-1 heading--thing--will_call' >Will call</div>
+<div class='col-sm-1 heading--thing--amount' >Amount</div>
+<div class='col-sm-1 heading--thing--aaa' >Aaa</div>
+<div class='col-sm-1 heading--thing--bbb' >Bbb</div>
+<div class='col-sm-1 heading--thing--ccc' >Ccc</div>
+<div class='col-sm-1 heading--thing--ddd' >Ddd</div>
+<div class='col-sm-1 heading--thing--eee' >Eee</div>
+
+          
+
+          <div class=' scaffold-col-heading scaffold-col-heading-buttons col-sm-1' >
+          </div>
+        </div>
+      
+
+      <% if things.empty? %>
+    <div>
+        None
+    </div>
+      <% end %>
+      <% things.each do |thing| %>
+        <%= render partial: 'things/line', locals: {thing: thing}
+            .merge(defined?(nested_for) ? {nested_for: nested_for} : {})
+      
+        %>
+      <% end %>
+      
+    <% if things.respond_to?(:total_pages) %><%= paginate(things) %> <% end %>
+  
+  </div>
+<% end %>

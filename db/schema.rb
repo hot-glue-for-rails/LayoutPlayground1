@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_01_232024) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_01_233807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,19 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_232024) do
   # Note that some types may not work with other database engines. Be careful if changing database.
   create_enum "expected_result_type", ["success", "failure"]
   create_enum "persona_type", ["admin", "user"]
-
-  create_table "people", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_people_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
-  end
 
   create_table "things", force: :cascade do |t|
     t.string "name"
@@ -40,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_232024) do
     t.time "will_be_at"
     t.enum "persona", enum_type: "persona_type"
     t.string "forecast"
-    t.integer "person_id"
+    t.integer "user_id"
     t.date "when_at"
     t.text "background_details"
     t.enum "expected_result", enum_type: "expected_result_type"
@@ -48,6 +35,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_01_232024) do
     t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "aaa"
+    t.integer "bbb"
+    t.text "ccc"
+    t.date "ddd"
+    t.datetime "eee"
   end
 
   create_table "users", force: :cascade do |t|

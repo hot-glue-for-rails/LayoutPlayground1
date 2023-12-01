@@ -1,0 +1,73 @@
+<div class='col-sm-1 thing--name'> <%= thing.name %></div>
+<div class='col-sm-1 thing--description'> <%= thing.description %></div>
+<div class='col-sm-1 thing--executed_on'> <% unless thing.executed_on.nil? %>
+      <%= thing.executed_on %>
+    <% else %>
+      <span class=''>MISSING</span>
+    <% end %></div>
+<div class='col-sm-1 thing--concieved_of_at'> <% unless thing.concieved_of_at.nil? %>
+  <%= thing.concieved_of_at.in_time_zone(current_timezone).strftime('%m/%d/%Y @ %l:%M %p %Z') %>
+  <% else %>
+  <span class=''>MISSING</span>
+  <% end %></div>
+<div class='col-sm-1 thing--will_be_at'> <% unless thing.will_be_at.nil? %>
+      <%= thing.will_be_at.in_time_zone(current_timezone).strftime('%l:%M %p ') %>
+     <% else %>
+    <span class=''>MISSING</span>
+    <% end %></div>
+<div class='col-sm-1 thing--persona'> 
+    <% if thing.persona.nil? %>
+        <span class='alert-danger'>Missing persona</span>
+    <% else %><%=  Thing.defined_enums['persona'][thing.persona.to_sym] %><% end %></div>
+<div class='col-sm-1 thing--forecast'> <%= thing.forecast %></div>
+<div class='col-sm-1 thing--user_id'> <%= thing.user.try(:name) || '<span class="content ">MISSING</span>'.html_safe %></div>
+<div class='col-sm-1 thing--when_at'> <% unless thing.when_at.nil? %>
+      <%= thing.when_at %>
+    <% else %>
+      <span class=''>MISSING</span>
+    <% end %></div>
+<div class='col-sm-1 thing--background_details'> <%= thing.background_details %></div>
+<div class='col-sm-1 thing--expected_result'> 
+    <% if thing.expected_result.nil? %>
+        <span class='alert-danger'>Missing expected_result</span>
+    <% else %><%=  Thing.defined_enums['expected_result'][thing.expected_result.to_sym] %><% end %></div>
+<div class='col-sm-1 thing--will_call'> <% if thing.will_call.nil? %>
+        <span class=''>MISSING</span>
+    <% elsif thing.will_call %>
+      YES
+    <% else %>
+      NO
+    <% end %></div>
+<div class='col-sm-1 thing--amount'> <%= thing.amount %></div>
+<div class='col-sm-1 thing--aaa'> <%= thing.aaa %></div>
+<div class='col-sm-1 thing--bbb'> <%= thing.bbb %></div>
+<div class='col-sm-1 thing--ccc'> <%= thing.ccc %></div>
+<div class='col-sm-1 thing--ddd'> <% unless thing.ddd.nil? %>
+      <%= thing.ddd %>
+    <% else %>
+      <span class=''>MISSING</span>
+    <% end %></div>
+<div class='col-sm-1 thing--eee'> <% unless thing.eee.nil? %>
+  <%= thing.eee.in_time_zone(current_timezone).strftime('%m/%d/%Y @ %l:%M %p %Z') %>
+  <% else %>
+  <span class=''>MISSING</span>
+  <% end %></div>
+
+
+
+
+
+
+<div class=" scaffold-line-buttons col-md-2" >
+  
+
+  
+    <%= form_with url: thing_path(thing), html: {data: {'turbo-confirm': "Are you sure you want to delete #{ thing.name }?"}, style: "display: inline-block;"}, method: :delete do |f| %>
+      <%= f.submit "Delete".html_safe,  class: "delete-thing-button btn btn-primary btn-sm" %>
+    <% end %>
+  
+
+  
+  <%= link_to "Edit ".html_safe, edit_thing_path(thing), disable_with: "Loading...", class: "edit-thing-button btn btn-primary btn-sm" %>
+  
+</div>

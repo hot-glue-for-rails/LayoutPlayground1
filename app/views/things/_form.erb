@@ -1,0 +1,168 @@
+<div class="row">
+  <div class='col-md-1 cell--thing--name' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:name) %>'  style="display: inherit;"  >
+       <br />
+        <%= f.text_field :name, value: thing.name, autocomplete: 'off', size: 40, class: 'form-control', type: '' %>
+       
+      
+      <label class='text-muted small form-text' for=''>Name</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--description' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:description) %>'  style="display: inherit;"  >
+       <br />
+      <%= f.text_area :description, class: 'form-control', autocomplete: 'off', cols: 40, rows: '5' %>
+      <label class='text-muted small form-text' for=''>Description</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--executed_on' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:executed_on) %>'  style="display: inherit;"  >
+       <br />
+      <%= date_field_localized(f, :executed_on, thing.executed_on, 'Executed on') %>
+      <label class='text-muted small form-text' for=''>Executed on</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--concieved_of_at' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:concieved_of_at) %>'  style="display: inherit;"  >
+       <br />
+      <%= datetime_field_localized(f, :concieved_of_at, thing.concieved_of_at, 'Concieved of at') %>
+      <label class='text-muted small form-text' for=''>Concieved of at</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--will_be_at' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:will_be_at) %>'  style="display: inherit;"  >
+       <br />
+      <%= time_field_localized(f, :will_be_at, thing.will_be_at,  'Will be at') %>
+      <label class='text-muted small form-text' for=''>Will be at</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--persona' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:persona) %>'  style="display: inherit;"  >
+       <br />
+      <%= f.collection_select(:persona,  enum_to_collection_select(Thing.defined_enums['persona']), :key, :value, {selected: thing.persona }, class: 'form-control') %>
+      <label class='text-muted small form-text' for=''>Persona</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--forecast' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:forecast) %>'  style="display: inherit;"  >
+       <br />
+        <%= f.text_field :forecast, value: thing.forecast, autocomplete: 'off', size: 40, class: 'form-control', type: '' %>
+       
+      
+      <label class='text-muted small form-text' for=''>Forecast</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--user_id' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:user) %>'  style="display: inherit;"  >
+       <br />
+        <%= f.collection_select(:user_id, User.all, :id, :name, {prompt: true, selected: thing.user_id }, class: 'form-control') %>
+      
+      <label class='text-muted small form-text' for=''>User</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--when_at' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:when_at) %>'  style="display: inherit;"  >
+       <br />
+      <%= date_field_localized(f, :when_at, thing.when_at, 'When at') %>
+      <label class='text-muted small form-text' for=''>When at</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--background_details' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:background_details) %>'  style="display: inherit;"  >
+       <br />
+      <%= f.text_area :background_details, class: 'form-control', autocomplete: 'off', cols: 40, rows: '5' %>
+      <label class='text-muted small form-text' for=''>Background details</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--expected_result' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:expected_result) %>'  style="display: inherit;"  >
+       <br />
+      <%= f.collection_select(:expected_result,  enum_to_collection_select(Thing.defined_enums['expected_result']), :key, :value, {selected: thing.expected_result }, class: 'form-control') %>
+      <label class='text-muted small form-text' for=''>Expected result</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--will_call' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:will_call) %>'  style="display: inherit;"  >
+       <br />
+      <div class='form-check '>
+        <%= f.radio_button(:will_call, '0', checked: thing.will_call  ? '' : 'checked', class: 'form-check-input') %>
+        <%= f.label(:will_call, value: 'No', for: 'thing_will_call_0') %>
+       <br /> <%= f.radio_button(:will_call, '1',  checked: thing.will_call  ? 'checked' : '' , class: 'form-check-input') %>
+        <%= f.label(:will_call, value: 'Yes', for: 'thing_will_call_1') %>
+      </div> 
+       <br />
+      <label class='text-muted small form-text form-check-label' for='thing_will_call'>Will call</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--amount' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:amount) %>'  style="display: inherit;"  >
+       <br />
+        <%= f.text_field :amount, value: thing.amount, autocomplete: 'off', size: 5, class: 'form-control', type: '' %>
+       
+      
+      <label class='text-muted small form-text' for=''>Amount</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--aaa' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:aaa) %>'  style="display: inherit;"  >
+       <br />
+        <%= f.text_field :aaa, value: thing.aaa, autocomplete: 'off', size: 40, class: 'form-control', type: '' %>
+       
+      
+      <label class='text-muted small form-text' for=''>Aaa</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--bbb' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:bbb) %>'  style="display: inherit;"  >
+       <br />
+        <%= f.text_field :bbb, value: thing.bbb, autocomplete: 'off', size: 4, class: 'form-control', type: 'number' %>
+       
+      
+      <label class='text-muted small form-text' for=''>Bbb</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--ccc' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:ccc) %>'  style="display: inherit;"  >
+       <br />
+      <%= f.text_area :ccc, class: 'form-control', autocomplete: 'off', cols: 40, rows: '5' %>
+      <label class='text-muted small form-text' for=''>Ccc</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--ddd' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:ddd) %>'  style="display: inherit;"  >
+       <br />
+      <%= date_field_localized(f, :ddd, thing.ddd, 'Ddd') %>
+      <label class='text-muted small form-text' for=''>Ddd</label>
+    </span>
+    <br />
+  </div>
+  <div class='col-md-1 cell--thing--eee' >  
+    <span class='<%= "alert alert-danger" if thing.errors.details.keys.include?(:eee) %>'  style="display: inherit;"  >
+       <br />
+      <%= datetime_field_localized(f, :eee, thing.eee, 'Eee') %>
+      <label class='text-muted small form-text' for=''>Eee</label>
+    </span>
+    <br />
+  </div>
+
+  <div class="col-md-2">
+    <%= link_to "Cancel", things_path,  {class: "btn btn-secondary"} %>
+    <%= f.submit "Save", class: "btn btn-primary pull-right" %>
+  </div>
+</div>

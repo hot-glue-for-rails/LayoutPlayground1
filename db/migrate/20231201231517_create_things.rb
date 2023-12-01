@@ -10,7 +10,7 @@ class CreateThings < ActiveRecord::Migration[7.0]
       t.time :will_be_at
       t.enum :persona, enum_type: :persona_type
       t.string :forecast
-      t.integer :person_id
+      t.integer :user_id
       t.date :when_at
       t.text :background_details
       t.enum :expected_result, enum_type: :expected_result_type

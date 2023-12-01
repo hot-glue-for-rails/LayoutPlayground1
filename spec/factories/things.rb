@@ -7,7 +7,7 @@ FactoryBot.define do
     will_be_at { "2023-12-01 18:15:17" }
     persona { "" }
     forecast { "MyString" }
-    person_id { 1 }
+    user_id { 1 }
     when_at { "2023-12-01" }
     background_details { "MyText" }
     expected_result { "" }
